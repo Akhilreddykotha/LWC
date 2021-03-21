@@ -1,0 +1,14 @@
+<template>
+    <p>Hello World</p>
+    <lightning-card title="create Record">
+        <div class="slds-p-around_medium">
+            <lightning-record-form
+                                    object-api-name = "Contact"
+                                    record-id ={recordId}
+                                    columns = 2
+                                    mode ='edit'
+                                    fields={conFields}>
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>

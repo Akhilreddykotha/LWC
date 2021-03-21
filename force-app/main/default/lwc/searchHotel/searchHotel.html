@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Search Hotels">
+        <div class="slds-p-around_medium slds-m-around_medium">            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-12">
+                    <label>Location</label>
+                    <lightning-combobox class="slds-m-bottom_medium" value ={location} options={locationOptions}
+                        onchange={handlelocation}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <label>Hotel type</label>
+                    <lightning-combobox class="slds-m-bottom_medium" value ={hotelType} options={hotelTypeOptions}
+                        onchange={handleHotelType}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <label>Room Type</label>
+                    <lightning-combobox class="slds-m-bottom_medium" value ={roomType} options={roomTypeOptions}
+                        onchange={handleRoomType}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <label>Check In</label>
+                    <lightning-input class="slds-m-bottom_medium" type="date" value={checkIn}
+                        onchange={handleCheckIn}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <label>Check Out</label>
+                    <lightning-input class="slds-m-bottom_medium" type="date" value={checkOut}
+                        onchange={handleCheckOut}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_2-of-12">                    
+                    <lightning-button icon-name="utility:search" label="Search Hotels" variant="inverse"
+                     onclick={showHotels}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="First Component" icon-name="utility:activity">
+        <lightning-button class="slds-m-around_small" label="Submit" variant="brand" onclick={handleClick} slot = "actions"></lightning-button>
+            <lightning-button class="slds-m-around_small" label="Hide" variant="destructive" onclick={handleDesClick} slot="footer"></lightning-button>
+        <div class="slds-p-around_medium box">
+            <p><b>Hello,</b>{name}</p>
+            <lightning-input class="slds-m-around_small" label ="Name" value={name} onchange={handleChange}></lightning-input>
+            
+            <template if:true={isVisible}>
+                <p class="slds-m-around_small">Button is Clicked</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

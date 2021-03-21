@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title = "New Case" icon-name="standard:case">
+        <div class="slds-p-around_small">
+            <lightning-input label = "Subject:" value ={cseSubject} onchange={handleSubject}></lightning-input>
+            <lightning-input label = "Description:" value ={cseDescrip} onchange={handleDescription}></lightning-input>
+            <p>Case Orgin:</p>
+            <select class="slds-select" name = "Case Origin" onchange={handleCaseOrigin} >
+                <option value="Phone">Phone</option>
+                <option value="Web">Web</option>
+                <option value="Email">Email</option>
+            </select> 
+        </div>
+        <div class ="slds-p-around_medium">
+            <lightning-button label = "Create Case" variant = "brand" onclick={createCase}></lightning-button>
+        </div>
+        <div class ="slds-p-around_large">
+            <template if:true = {cseId}>
+                <P>Case Created with Id: {cseId}</P>
+            </template>
+            <template if:false = {cseId}>
+                <P>{error}</P>
+            </template>
+        </div>
+    </lightning-card>
+</template>

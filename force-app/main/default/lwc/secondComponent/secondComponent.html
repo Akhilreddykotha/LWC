@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title='Second Component' icon-name="Utility:add">
+        <lightning-button class="slds-m-around_small" label= {buttonLabel} variant={variant} onclick={handleClick} slot = "actions"></lightning-button>
+        <div class='slds-m-around_medium'>
+            <lightning-input label = 'Name' value = {name} onchange = {handleChange}></lightning-input>
+            <lightning-input label = 'Email' value = {email} onchange = {handleChange1}></lightning-input>
+            <lightning-input label = 'Phone' value = {phone} onchange = {handleChange2}></lightning-input>         
+        </div>
+        
+        <div class='slds-m-around_medium' slot="footer">
+            <template if:true={areDetailsVisible}>
+                <p><b>Name: </b>{name}</p>
+                <p><b>Email: </b>{email}</p>
+                <p><b>Phone: </b>{phone}</p> 
+            </template>           
+        </div>
+    </lightning-card>
+</template>

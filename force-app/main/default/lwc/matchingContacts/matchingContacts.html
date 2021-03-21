@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Matching Contacts">
+        <div if:true={dtResult} class="slds-p-around_medium slds-box slds-m-around_medium">
+        <lightning-datatable data={dtResult}
+                                 columns={columns}
+                                 key-field="Id"                                 
+                                 onrowselection ={onsuccess}>
+            </lightning-datatable>
+            
+        </div>
+        <c-summaryof-contacts recid={getRowId}></c-summaryof-contacts>
+    </lightning-card>
+</template>

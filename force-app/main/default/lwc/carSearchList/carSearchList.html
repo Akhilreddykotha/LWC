@@ -1,0 +1,16 @@
+<template>
+    <div class="topbar"></div>
+    <div class="slds-card listview slds-p-around_small">
+        <div class="scrollable-view">
+            <template if:true={searchData}>
+                <template for:each={searchData} for:item="car">
+                    <div key={car.Id} class="slds-p-around_medium">
+                        <c-car-details-card mycar={car} onbookingevt={handleBookingEvent}></c-car-details-card>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </div>
+    <c-modal-car-rental carobject={carObject} startdate={startdate} enddate={enddate}>
+    </c-modal-car-rental>
+</template>

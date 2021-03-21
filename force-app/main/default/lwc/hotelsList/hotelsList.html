@@ -1,0 +1,103 @@
+<template>
+    <div class="listview slds-p-around_small">
+        <div class="scrollable-view">
+            <template if:true={searchData}>
+                <template for:each={searchData} for:item="hotel">
+                    <div key={hotel.Id} class="slds-p-around_medium">
+                        <div class = "slds-card slds-scrollable slds-grid slds-gutters slds-box">
+                            <div class ="slds-col slds-medium-size_3-of-12">
+                                <div class="slds-clearfix slds-p-around_small">
+                                    <img src={hotel.Picture_URL__c} class="avatarCustom" />
+                                </div>
+                            </div>
+                            <div class="slds-col slds-medium-size_6-of-12">
+                                <h1>{hotel.Hotel_Name__c}</h1>
+                                <div class= "features">
+                                    <div class="feature">
+                                    <span class="slds-m-right_x-small">
+                                        <img src="https://www.flaticon.com/svg/vstatic/svg/786/786331.svg?token=exp=1616082655~hmac=6555564084fd32f150704dd1d03d4ff6"
+                                            class="svgcustom" />
+                                    </span>
+                                    <span>
+                                        {hotel.Hotel_Type__c}
+                                    </span>
+                                </div>
+                                <div class= "feature">
+                                    <span class="slds-m-right_x-small">
+                                        <img src="https://www.flaticon.com/svg/vstatic/svg/494/494970.svg?token=exp=1616134559~hmac=08470d62c941185489e4be96d7bfadad"
+                                            class="svgcustom" />
+                                    </span>
+                                    <span>
+                                        {hotel.Room_Type__c}
+                                    </span>
+                                </div>
+                                <div class= "feature">
+                                    <span class="slds-m-right_x-small">
+                                        <img src="https://www.flaticon.com/svg/vstatic/svg/684/684908.svg?token=exp=1616135416~hmac=ec30cd6e00458b1b6a580bb3c848c355"
+                                            class="svgcustom" />
+                                    </span>
+                                    <span>
+                                        {hotel.Location__c}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="slds-col slds-medium-size_3-of-12 slds-p-around_small">
+                                <div class="price">
+                                    <sup class="rupee">*</sup>
+                                    <lightning-formatted-number format-style="currency" value={hotel.Charges_Per_Day__c} 
+                                            minimum-fraction-digits="0" maximum-fraction-digits="0">
+                                    </lightning-formatted-number>
+                                    <sub class="subspan">Per Day</sub>
+                                </div>
+                                <div class="slds-m-around_small slds-p-around_small">
+                                    <lightning-button icon-name="utility:save" label="Book Now" variant="success" 
+                                                        onclick={handleBooking}></lightning-button>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </template>
+            </template>
+        </div>
+    </div>
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!--modal Header-->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span></button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium">
+                             <b>Give your details here</b>
+                        </h2>
+                </header>
+                <!-- modal boday-->
+                <div class="slds-modal__content slds-p-around_medium" id= "modal-content-id-2">
+                    <lightning-record-edit-form object-api-name={objectApiName} 
+                                                    onsubmit={onSubmitHandler}                                                    
+                                                    onsuccess={handleSuccess}>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning-input-field field-name="Customer_Name__c"></lightning-input-field>
+                            <lightning-input-field field-name="Email__c"></lightning-input-field>
+                            <lightning-input-field field-name="Phone__c"></lightning-input-field>                                                   
+                        </div>
+                        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-p-horizontal--large"></div>
+                        <div class="slds-card slds-p-around_medium">  
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancel" align="left" variant="destructive" onclick={closeModal}></lightning-button>
+                                &nbsp; &nbsp; &nbsp;
+                                <lightning-button label="Book" variant="brand" align="right" type="submit" ></lightning-button>
+                            </footer>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+        </section>
+    </template>    
+</template>

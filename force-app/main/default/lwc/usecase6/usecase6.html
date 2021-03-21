@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title = 'Edit form' icon-name="standard:opportunity">
+        <div class = "slds-p-around_medium">
+            <lightning-record-edit-form
+                                        object-api-name = {objectApiName}
+                                        record-id = {recordId}>
+                    <lightning-output-field field-name={accNameField}></lightning-output-field>
+                    <lightning-output-field field-name={nameField}></lightning-output-field>
+                    <lightning-output-field field-name={stageNameField}></lightning-output-field>
+                    <lightning-output-field field-name={typeField}></lightning-output-field>
+                    <lightning-output-field field-name={createbyField}></lightning-output-field>
+                    <lightning-output-field field-name={closeDateField}></lightning-output-field>
+                    <lightning-output-field field-name={amountField}></lightning-output-field>
+                    
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

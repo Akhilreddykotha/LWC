@@ -1,0 +1,31 @@
+<template>
+    <lightning-card variant="Narrow" class="slds-p-top_x-large">
+        <div slot="title" class="slds-grid">
+            <div class="slds-col--padded ">
+                <h2>
+                    <lightning-icon icon-name="standard:opportunity" size="small">
+                    </lightning-icon>
+                    &nbsp;Opportunities
+                </h2>
+            </div>
+            <div class="slds-col-padded">
+                <lightning-button name="Submit" label="Submit" onclick={submitHandler}
+                     alternative-text="Submit">
+                </lightning-button>
+                <lightning-button  name="deleteDevelopmentBtn" label="Cancel"
+                    onclick={cancelHandler} alternative-text="Cancel"
+                    title="Delete Development">
+                </lightning-button>
+            </div>
+        </div>
+        <template if:true={data}>
+            <lightning-datatable 
+                        data={data} 
+                        columns={columns} 
+                        key-field="id" 
+                        onrowselection={getSelectedRows}>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+    
+</template>
